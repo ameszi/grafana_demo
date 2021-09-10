@@ -1,0 +1,18 @@
+global:
+  scrape_interval:     5s
+  scrape_timeout:      3s
+  evaluation_interval: 5s
+ 
+# Our alerting rule files
+rule_files:
+  - "alert.rules"
+ 
+# Scrape endpoints
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']
+ 
+  - job_name: 'mysql'
+    static_configs:
+      - targets: ['mysql-exporter:9104']
